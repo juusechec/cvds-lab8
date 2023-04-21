@@ -1,4 +1,4 @@
-package com.logicbig.example;
+package com.logicbig.example.faces;
 
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;

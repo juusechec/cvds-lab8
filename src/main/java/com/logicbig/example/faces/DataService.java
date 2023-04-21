@@ -1,6 +1,7 @@
-package com.logicbig.example;
+package com.logicbig.example.faces;
 
 import org.springframework.stereotype.Service;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -15,6 +16,6 @@ public class DataService {
         map.put(4, 139.76);
         map.put(5, 300.4);
         map.put(6, 630.0);
-       return map;
+        return map;
     }
 }

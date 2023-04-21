@@ -5,26 +5,29 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://java.sun.com/jsf/core">
+<f:metadata>
+    <f:event type="preRenderView" listener="#{guessBean.onDatabaseLoaded()}" />
+</f:metadata>
 <h:head></h:head>
 <h:body>
     <h:form id="guess_form">
-        <p:outputLabel  value="#{userBean.getNumber()}" style="display: none;"/>
+        <p:outputLabel  value="#{guessBean.getNumber()}" style="display: none;"/>
         <h5>Input a number: </h5>
         <p:inputText binding="#{input}"/>
         <br/>
         <h5>Tries: </h5>
-        <h:outputLabel value="#{userBean.getTries()}"/>
+        <h:outputLabel value="#{guessBean.getTries()}"/>
         <br/>
         <h5>State: </h5>
-        <h:outputLabel value="#{userBean.getState()}"/>
+        <h:outputLabel value="#{guessBean.getState()}"/>
         <br/>
         <h5>Reward: </h5>
-        <h:outputLabel value="#{userBean.getReward()}"/>
+        <h:outputLabel value="#{guessBean.getReward()}"/>
         <br/>
-        <p:commandButton value="Send" styleClass="rounded-button" update="guess_form" actionListener="#{userBean.guess(input.value)}"/>
-        <p:commandButton value="Reset" styleClass="rounded-button" update="guess_form" actionListener="#{userBean.reset()}"/>
+        <p:commandButton value="Send" styleClass="rounded-button" update="guess_form" actionListener="#{guessBean.guess(input.value)}"/>
+        <p:commandButton value="Reset" styleClass="rounded-button" update="guess_form" actionListener="#{guessBean.reset()}"/>
         <br/>
-        <h:dataTable value="#{userBean.getAlreadyTried()}" var="tried" rules="rows">
+        <h:dataTable value="#{guessBean.getAlreadyTried()}" var="tried" rules="rows">
             <h:column>
                 <f:facet name="header">Tried</f:facet>
                 <h:outputText value="#{tried}" />

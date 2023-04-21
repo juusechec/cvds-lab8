@@ -1,5 +1,7 @@
-package com.logicbig.example;
+package com.logicbig.example.faces;
 
+import com.logicbig.example.data.MyConfigurationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.faces.bean.ManagedBean;
@@ -9,26 +11,35 @@ import java.util.ArrayList;
 @Component
 @ManagedBean
 @ViewScoped
-public class UserBean {
+public class GuessBean {
+    @Autowired
+    MyConfigurationService myConfigurationService;
     private int number;
     private int reward;
     private int tries;
     private String state;
     private ArrayList<Integer> alreadyTried;
 
-    public UserBean(){
+    public GuessBean(){
         reset();
     }
 
     public void guess(int attempt){
         addTry();
         alreadyTried.add(attempt);
+        System.out.println("Para ganar use el número: " + number);
         if (attempt == number){
             setState("Win: " + String.valueOf(reward));
         }else{
             setReward(reward - 10000);
             setState("You still do not win");
         }
+    }
+
+    public void onDatabaseLoaded() {
+        Integer dbReward = Integer.parseInt(myConfigurationService.getValorOfPremio());
+        System.out.println("Se consulta de la base de datos la recompensa: " + dbReward);
+        setReward(dbReward);
     }
 
     public void reset(){
