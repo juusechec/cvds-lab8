@@ -18,7 +18,6 @@ import javax.servlet.ServletContext;
 import java.util.Arrays;
 
 @SpringBootApplication
-@EnableAutoConfiguration
 public class Main{
     @Autowired
     MyConfigurationService myConfigurationService;
