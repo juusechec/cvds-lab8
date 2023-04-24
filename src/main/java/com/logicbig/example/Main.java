@@ -27,7 +27,7 @@ public class Main{
         SpringApplication.run(Main.class, args);
     }
 
-    @Bean(name = "database")
+    @Bean
     public CommandLineRunner run() throws Exception {
         return (args) -> {
             System.out.println("Adding Configuration....\n");
@@ -39,7 +39,6 @@ public class Main{
     }
 
     @Bean
-    @DependsOn({"database"})
     ServletRegistrationBean jsfServletRegistration (ServletContext servletContext) {
         //spring boot only works if this is set
         servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
