@@ -24,11 +24,11 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
+      - uses: actions/cache@v3
         with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: |
+            target
+          key: ${{ runner.os }}-${{ hashFiles('**/target') }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -38,10 +38,11 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
+      - uses: actions/cache@v3
         with:
-          name: java-app
+          path: |
+            target
+          key: ${{ runner.os }}-${{ hashFiles('**/target') }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
