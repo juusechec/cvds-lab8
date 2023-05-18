@@ -47,6 +47,11 @@ jobs:
       - name: change war to jar extension
         run: mv target/jorge-lab8.war target/app.jar
 
+      - name: list
+        run: |
+          ls -la .
+          ls -la target
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
