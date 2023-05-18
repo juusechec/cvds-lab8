@@ -44,6 +44,9 @@ jobs:
             target
           key: cache-${{ hashFiles('**/src') }}
 
+      - name: change war to jar extension
+        run: mv target/jorge-lab8.war target/app.jar
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -51,4 +54,4 @@ jobs:
           app-name: 'cvds-jorge-lab8'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A4C286D6CF0746918EBE9B799683C149 }}
-          package: '*.war'
+          package: '*.jar'
