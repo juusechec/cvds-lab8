@@ -59,4 +59,4 @@ jobs:
           app-name: 'cvds-jorge-lab8'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A4C286D6CF0746918EBE9B799683C149 }}
-          package: '*.jar'
+          package: 'target/app.jar'
