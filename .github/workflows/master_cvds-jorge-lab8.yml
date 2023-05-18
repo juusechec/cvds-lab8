@@ -28,7 +28,7 @@ jobs:
         with:
           path: |
             target
-          key: cache-v1-${{ hashFiles('**/target') }}
+          key: cache-v1-${{ hashFiles('**/src', '**/pom.xml', '**/.github') }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
         with:
           path: |
             target
-          key: cache-v1-${{ hashFiles('**/target') }}
+          key: cache-v1-${{ hashFiles('**/src', '**/pom.xml', '**/.github') }}
 
       - name: change war to jar extension
         run: mv target/jorge-lab8.war target/app.jar
