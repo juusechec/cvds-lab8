@@ -28,7 +28,7 @@ jobs:
         with:
           path: |
             target
-          key: cache-${{ hashFiles('**/src') }}
+          key: cache-v1-${{ hashFiles('**/target') }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
         with:
           path: |
             target
-          key: cache-${{ hashFiles('**/src') }}
+          key: cache-v1-${{ hashFiles('**/target') }}
 
       - name: change war to jar extension
         run: mv target/jorge-lab8.war target/app.jar
