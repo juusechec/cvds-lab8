@@ -28,7 +28,7 @@ jobs:
         with:
           path: |
             target
-          key: ${{ runner.os }}-${{ hashFiles('**/target') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/src') }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
         with:
           path: |
             target
-          key: ${{ runner.os }}-${{ hashFiles('**/target') }}
+          key: ${{ runner.os }}-${{ hashFiles('**/src') }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
