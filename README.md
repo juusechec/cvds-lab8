@@ -8,5 +8,4 @@ export MYSQL_PASSWORD=my-secret-pw
 maven clean package spring-boot:repackage
 
 java -jar target/jorge-lab8.jar --trace
-
 ```
